@@ -71,7 +71,7 @@ def changelog_detail(request, change_id):
     previous_change_lines = []
 
     try:
-        previous_change = WikiPageModification.objects.filter(pk__lt=change_id).latest('timestamp')
+        previous_change = WikiPageModification.objects.filter(pk__lt=change_id, page=page.id).latest('timestamp')
         previous_change_lines = previous_change.content.splitlines()
     except WikiPageModification.DoesNotExist:
         previous_change = False
