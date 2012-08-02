@@ -240,13 +240,12 @@ nav {
      * Login
      */
     #content .login_form {
-
+        width: 600px;
+        margin: auto;
     }
 
-        #content .login_form fieldset {
-            width: 600px;
-            margin: auto;
-            border: 1px solid #ccc;
+        #content .login_form h1  {
+            text-align: center;
         }
 
         #content .login_form table {

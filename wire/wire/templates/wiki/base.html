@@ -29,6 +29,9 @@
                         <li class="{% block nav_page_new %}{% endblock %}"><a href="{% url 'wiki:page_new' %}">New Page</a></li>
                         <li class="{% block nav_changelog %}{% endblock %}"><a href="{% url 'wiki:changelog' %}">Changelog</a></li>
                         <li><a href="http://daringfireball.net/projects/markdown/syntax/">Syntax</a></li>
+                        {% if user.is_superuser %}
+                            <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                        {% endif %}
                         <li><a href="{% url 'wiki:logout_to_index' %}">Logout</a></li>
                     {% else %}
                         <li class="{% block nav_login %}{% endblock %}"><a href="{% url 'wiki:login' %}">Login</a></li>

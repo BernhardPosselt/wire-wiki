@@ -13,8 +13,7 @@
            <p class="warning">{% blocktrans %}Your username and password didn't match. Please try again.{% endblocktrans %}</p>
         {% endif %}
 
-        <fieldset>
-            <legend>{% trans 'Login' %}</legend>
+        <h1>{% trans 'Login' %}</h1>
         
             <form method="post" action="{% url 'wiki:login' %}">
                 <input type="hidden" name="next" value="{{ next }}" />
@@ -35,7 +34,6 @@
                 </table>
             </form>
 
-        </fieldset>
     </div>
 
 {% endblock %}
