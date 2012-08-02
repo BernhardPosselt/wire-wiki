@@ -11,16 +11,13 @@
     <li><a href="{% url 'wiki:page' page.id %}">{% trans 'Back' %}</a></li>
 </ul>
 
-<p>{% trans 'Are you sure that you want to delete the page'%}: {{ page.title }} ?</p>
+<p>{% trans 'Are you sure that you want to delete the page'%}: {{ page.title }} ? 
 
 <form action="{% url 'wiki:page_delete' page.id %}" method="post">
     {% csrf_token %}
-    <table>
-        <tr>
-            <td><input type="submit" value="{% blocktrans %}Yes{% endblocktrans %}" /></td>
-            <td><input type="button" onclick="history.back()" value="{% blocktrans %}No{% endblocktrans %}" /></td>
-        </tr>
-    </table>
+    <input type="submit" value="{% blocktrans %}Yes{% endblocktrans %}" />
+    <input type="button" onclick="history.back()" value="{% blocktrans %}No{% endblocktrans %}" />
 </form>
+</p>
 
 {% endblock %}
