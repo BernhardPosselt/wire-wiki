@@ -270,6 +270,7 @@ nav {
     #content pre {
         background-color: #ddd;
         border: 1px solid #ccc;
+        border-left: 3px solid #bbb;
         padding: 5px;
     }
 
