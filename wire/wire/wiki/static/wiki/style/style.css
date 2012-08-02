@@ -1,0 +1,257 @@
+/**
+ * Palette http://www.colourlovers.com/palette/2314521/redesign
+ * By geronimo89
+ * 94C000
+ * CEFF29
+ * EBFFA6
+ * F1F1F1
+ * 2A2C26
+ * 
+ */
+
+
+/**
+ * Fonts
+ */
+@font-face {
+    font-family: dejavusans;
+    src: url('../../common/font/DejaVuSansCondensed.woff');
+}
+
+@font-face {
+    font-family: dejavusans;
+    font-weight: bold;
+    src: url('../../common/font/DejaVuSans-Bold.woff');
+}
+
+
+* {
+
+}
+
+.chromeframe {
+    padding: 5px;
+    margin: 0;
+    text-align: center;
+    background-color: #EBFFA6;
+}
+
+/**
+ * Site
+ */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+input, textarea, select {
+    border: 1px solid #ccc;
+    padding: 3px 5px;
+}
+
+input[type=text], input[type=password]{
+    width: 300px;
+}
+
+input[type=submit]{
+    padding: 3px 10px;
+}
+
+textarea {
+    width: 400px;
+}
+
+a {
+    color: #0000FF;
+}
+
+form table tr {
+    line-height: 30px;
+}
+
+    form table tr td {
+        padding-left: 10px;
+    }
+
+    form table tr th {
+        text-align: right;
+    }
+
+#site {
+    min-height: 100%;
+    width: 100%;
+    position: relative;
+    background-color: #F1F1F1;
+    font-family: dejavusans;
+    font-size: 12pt;
+}
+
+#main {
+    padding-bottom: 50px; /* adjust this to the height of the footer */
+}
+
+/**
+ * Header
+ */
+header {
+
+}
+
+/**
+ * Navigation
+ */
+nav {
+    position: relative;
+    z-index: 100;
+    height: 36px;
+    background-color: #2A2C26;
+}
+
+    nav ul {
+        margin: 0 auto;
+        padding: 0;
+        list-style-type: none;
+        width: 1024px;
+    }
+
+        nav ul li {
+            height: 36px;
+            line-height: 36px;
+            display: inline-block;
+            color: #fefefe;
+            float: left;
+        }
+
+            nav ul li:hover {
+                background-color: #94C000;
+            }
+
+            nav ul li a {
+                display: inherit;
+                line-height: inherit;
+                color: inherit;
+                text-decoration: none;
+                padding: 0 10px;
+            }
+
+        nav ul li.active {
+            background-color: #94C000;
+        }
+
+
+
+/**
+ * Content
+ */
+#content {
+    position: relative;
+    z-index: 50;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 1024px;
+    margin: auto;
+    padding: 25px;
+    background-color: #fefefe;
+    -webkit-box-shadow: 0px 1px 5px 1px #333;
+    box-shadow: 0px 1px 5px 1px #ccc; 
+}
+
+    #content p {
+        margin: 0;
+        padding-bottom: 10px;
+        line-height: 1.5;
+    }
+
+    #content li {
+        line-height: 1.5;
+    }
+
+    #content h1, #content h2 {
+        margin: 0;
+        padding: 10px 0;
+    }
+
+    #content h1 {
+        font-size: 16pt;
+    }
+
+    #content h2 {
+        font-size: 14pt;
+    }
+
+    #content ul.utils {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+        #content ul.utils li {
+            display: inline-block;
+        }
+
+    /**
+     * Forms
+     */
+    #content .wiki_form {
+
+    }
+
+        #content .wiki_form table {
+            width: 100%;
+        }
+
+
+        #content .wiki_form textarea {
+            width: 100%;
+            height: 600px;
+        }
+
+    /**
+     * Login
+     */
+    #content .login_form {
+
+    }
+
+        #content .login_form fieldset {
+            width: 600px;
+            margin: auto;
+            border: 1px solid #ccc;
+        }
+
+        #content .login_form table {
+            margin: 20px auto;
+        }
+
+            #content .login_form table th {
+                text-align: right;
+                font-weight: normal;
+            }
+
+            #content .login_form table td {
+                padding-left: 15px;
+            }
+
+        #content .login_form .warning  {
+            width: 600px;
+            margin: auto;
+        }
+
+    #content pre {
+        background-color: #ddd;
+        border: 1px solid #ccc;
+        padding: 5px;
+    }
+
+
+/**
+ * Footer
+ */
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0px; /* changes this to your own liking */
+}

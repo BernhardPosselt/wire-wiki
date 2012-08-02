@@ -1,0 +1,41 @@
+{% extends 'wiki/base.html' %}
+{% load url from future %}
+{% load i18n %}
+
+{% block title %}{% endblock %}
+
+{% block nav_login %}active{% endblock %}
+
+{% block content %}
+            
+    <div class="login_form">
+        {% if form.errors %}
+           <p class="warning">{% blocktrans %}Your username and password didn't match. Please try again.{% endblocktrans %}</p>
+        {% endif %}
+
+        <fieldset>
+            <legend>{% trans 'Login' %}</legend>
+        
+            <form method="post" action="{% url 'wiki:login' %}">
+                <input type="hidden" name="next" value="{{ next }}" />
+                {% csrf_token %}
+                <table>
+                <tr>
+                    <th>{{ form.username.label_tag }}</th>
+                    <td>{{ form.username }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form.password.label_tag }}</th>
+                    <td>{{ form.password }}</td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><input type="submit" value="{% blocktrans %}login{% endblocktrans %}" /></td>
+                </tr>
+                </table>
+            </form>
+
+        </fieldset>
+    </div>
+
+{% endblock %}

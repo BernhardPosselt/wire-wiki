@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load url from future %}
+{% load i18n %}
+
+{% block html %}data-settingsurl="{% block settings_url %}{% endblock %}{% url 'wiki:js_settings' %}"{% endblock %}
+
+{% block extra_head %}
+    <link rel="icon" type="image/png" href="{{ STATIC_URL }}wiki/img/favicon.png"/>
+    <link rel="stylesheet" href="{{ STATIC_URL }}wiki/style/style.css" type="text/css" media="all"/>
+    <link rel="stylesheet" href="{{ STATIC_URL }}wiki/style/animation.css" type="text/css" media="all"/>
+    <script src="{{ STATIC_URL }}wiki/script/main.js" type="text/javascript" charset="utf-8"></script>
+{% endblock %}
+
+{% block keywords %}{% endblock %}
+{% block description %}{% endblock %}
+{% block authors %}{% endblock %}
+
+{% block body %}
+    <div id="site">
+        <div id="main">
+            <!--[if lte IE 8]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+            <header></header>
+            
+            <nav>
+                <ul>
+                    <li class="{% block nav_home %}{% endblock %}"><a href="{% url 'wiki:index' %}">Wiki</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'wiki:logout_to_index' %}">Logout</a></li>
+                    {% else %}
+                        <li class="{% block nav_login %}{% endblock %}"><a href="{% url 'wiki:login' %}">Login</a></li>
+                    {% endif %}
+                </ul>   
+            </nav>
+            
+            <div id="content">{% block content %}{% endblock %}</div>
+            
+        </div>
+
+        <footer></footer>
+    
+    </div>
+{% endblock %}
+        
+
+    
