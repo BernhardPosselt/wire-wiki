@@ -1,0 +1,32 @@
+{% extends 'wiki/base.html' %}
+{% load url from future %}
+{% load i18n %}
+
+{% block title %}WIRE - {% trans 'Changelog detail for page ' %}{{ page.title }}{% endblock %}
+
+{% block nav_changelog %}active{% endblock %}
+
+<h1>Changelog of {{ page.title }}</h1>
+    
+{% block content %}
+<table class="changelog_detail">
+    <tr>
+        <th>{% trans 'Page' %}: </th>
+        <td>{{ change.page }}</td>
+    </tr>
+    <tr>
+        <th>{% trans 'User' %}: </th>
+        <td>{{ change.user.username }}</td>
+    </tr>
+    <tr>
+        <th>{% trans 'Date of change' %}: </th>
+        <td>{{ change.timestamp|date:"Y M, H:i" }}</td>
+    </tr>
+</table>
+
+<div class="text">
+    {{ html|safe }}
+</div>
+
+
+{% endblock %}

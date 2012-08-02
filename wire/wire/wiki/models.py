@@ -21,11 +21,13 @@ class WikiPage(models.Model):
 class WikiPageModification(models.Model):
     page = models.ForeignKey("WikiPage")
     content = models.TextField(_(u"Content"), blank=True)
+    description = models.CharField(_(u"Description"), default=_("Minor Change"),
+        blank=True, max_length=100)
     timestamp = models.DateTimeField(_(u"Created"), auto_now_add=True)
     user = models.ForeignKey("auth.User")
 
     def __unicode__(self):
-        return self.title
+        return self.description
 
     class Meta:
         verbose_name = _(u"WikiPage Modification")

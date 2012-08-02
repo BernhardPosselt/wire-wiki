@@ -4,12 +4,9 @@
 
 {% block title %}{% blocktrans %}WIRE - New page{% endblocktrans %}{% endblock %}
 
-{% block nav_home %}active{% endblock %}
+{% block nav_page_new %}active{% endblock %}
     
 {% block content %}
-<ul class="utils">
-    <li><a href="{% url 'wiki:index' %}">{% trans 'Back' %}</a></li>
-</ul>
 <h1>{% trans 'New page' %}</h1>
 
 <form action="{% url 'wiki:page_new' %}" method="post">

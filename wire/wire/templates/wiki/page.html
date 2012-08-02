@@ -2,21 +2,26 @@
 {% load url from future %}
 {% load i18n %}
 
-{% block title %}{% blocktrans %}WIRE - {{ page.title }}{% endblocktrans %}{% endblock %}
+{% block title %}WIRE - {{ page.title }}{% endblock %}
 
 {% block nav_home %}active{% endblock %}
     
 {% block content %}
 <ul class="utils">
-    <li><a href="{% url 'wiki:index'%}">{% trans 'Back' %}</a></li>
-    <li><a href="{% url 'wiki:page_delete' page.id %}">{% trans 'Delete page' %}</a></li>
     <li><a href="{% url 'wiki:page_edit' page.id %}">{% trans 'Edit page' %}</a></li>
+    <li><a href="{% url 'wiki:page_delete' page.id %}">{% trans 'Delete page' %}</a></li>
 </ul>
+<hr class="utils_seperation"/>
+<h1>{% trans 'Page' %}: {{ page.title }}</h1>
 
-{{ html|safe }}
+<div class="text">
+    {{ html|safe }}
+</div>
+
+<hr class="utils_seperation"/>
+
 <ul class="utils">
-    <li><a href="{% url 'wiki:index'%}">{% trans 'Back' %}</a></li>
-    <li><a href="{% url 'wiki:page_delete' page.id %}">{% trans 'Delete page' %}</a></li>
     <li><a href="{% url 'wiki:page_edit' page.id %}">{% trans 'Edit page' %}</a></li>
+    <li><a href="{% url 'wiki:page_delete' page.id %}">{% trans 'Delete page' %}</a></li>
 </ul>
 {% endblock %}

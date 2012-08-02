@@ -17,16 +17,67 @@ from wire.wiki.forms import WikiPageForm, WikiPageModificationForm
 @login_required
 def index(request):
     pages = WikiPage.objects.all()
-    ctx = {
-        'pages': pages,
-    }
-    return render(request, 'wiki/index.html', ctx)
+    if len(pages) > 0:
+        try:
+            page = WikiPage.objects.get(title="Index")
+            return HttpResponseRedirect(reverse('wiki:page', args=[page.id]))
+        except WikiPage.DoesNotExist:
+            return HttpResponseRedirect(reverse('wiki:pages'))
+    else:
+        return HttpResponseRedirect(reverse('wiki:pages'))
 
 
 @login_required
-def page(request, id):
-    page = get_object_or_404(WikiPage, pk=id)
-    modifications = WikiPageModification.objects.filter(page__id=id)
+def pages(request):
+    pages = WikiPage.objects.all()
+    index_page = WikiPage.objects.filter(title="Index")
+    if len(index_page) > 0:
+        index_page_exists = True
+    else:
+        index_page_exists = False
+
+    ctx = {
+        'pages': pages,
+        'index_page_exists': index_page_exists
+    }
+    return render(request, 'wiki/pages.html', ctx)
+
+
+@login_required
+def page_changelog(request, page_id):
+    changes = WikiPageModification.objects.filter(page=page_id)
+    ctx = {
+        'changes': changes,
+    }
+    return render(request, 'wiki/changelog.html', ctx)
+
+
+@login_required
+def changelog(request):
+    changes = WikiPageModification.objects.all()
+    ctx = {
+        'changes': changes,
+    }
+    return render(request, 'wiki/changelog.html', ctx)
+
+
+@login_required
+def changelog_detail(request, change_id):
+    change = get_object_or_404(WikiPageModification, pk=change_id)
+    page = change.page
+    html = markdown.markdown(change.content.encode("UTF-8"))
+    ctx = {
+        'page': page,
+        'change': change,
+        'html': html
+    }
+    return render(request, 'wiki/changelog_detail.html', ctx)
+
+
+@login_required
+def page(request, page_id):
+    page = get_object_or_404(WikiPage, pk=page_id)
+    modifications = WikiPageModification.objects.filter(page__id=page_id)
     if len(modifications) > 0:
         latest_modification = modifications[0]
         html = markdown.markdown(latest_modification.content.encode("UTF-8"))
@@ -42,23 +93,27 @@ def page(request, id):
 
 @login_required
 def page_new(request):
+    title = request.GET.get('title', '')
     if request.method == 'POST':
         form = WikiPageForm(request.POST)
         if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('wiki:index'))
+            form = form.save()
+            return HttpResponseRedirect(reverse('wiki:page', args=[form.id]))
     else:
-        form = WikiPageForm()
+        initial = {
+            'title': title
+        }
+        form = WikiPageForm(initial=initial)
     ctx = {
-        'form': form,
+        'form': form
     }
     return render(request, 'wiki/page_new.html', ctx)
 
 
 @login_required
-def page_edit(request, id):
-    page = get_object_or_404(WikiPage, pk=id)
-    modifications = WikiPageModification.objects.filter(page__id=id)
+def page_edit(request, page_id):
+    page = get_object_or_404(WikiPage, pk=page_id)
+    modifications = WikiPageModification.objects.filter(page__id=page_id)
 
     if request.method == 'POST':
         form = WikiPageModificationForm(request.POST)
@@ -67,7 +122,7 @@ def page_edit(request, id):
             form.user = request.user
             form.page = page
             form.save()
-            return HttpResponseRedirect(reverse('wiki:index'))
+            return HttpResponseRedirect(reverse('wiki:page', args=[page_id]))
 
     else:
         if len(modifications) > 0:
@@ -84,8 +139,8 @@ def page_edit(request, id):
 
 
 @login_required
-def page_delete(request, id):
-    page = get_object_or_404(WikiPage, pk=id)
+def page_delete(request, page_id):
+    page = get_object_or_404(WikiPage, pk=page_id)
 
     if request.method == 'POST':
         page.delete()

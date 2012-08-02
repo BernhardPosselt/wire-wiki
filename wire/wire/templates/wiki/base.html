@@ -23,8 +23,11 @@
             
             <nav>
                 <ul>
-                    <li class="{% block nav_home %}{% endblock %}"><a href="{% url 'wiki:index' %}">Wiki</a></li>
                     {% if user.is_authenticated %}
+                        <li class="{% block nav_home %}{% endblock %}"><a href="{% url 'wiki:index' %}">Wiki</a></li>
+                        <li class="{% block nav_pages %}{% endblock %}"><a href="{% url 'wiki:pages' %}">Pages</a></li>
+                        <li class="{% block nav_page_new %}{% endblock %}"><a href="{% url 'wiki:page_new' %}">New Page</a></li>
+                        <li class="{% block nav_changelog %}{% endblock %}"><a href="{% url 'wiki:changelog' %}">Changelog</a></li>
                         <li><a href="{% url 'wiki:logout_to_index' %}">Logout</a></li>
                     {% else %}
                         <li class="{% block nav_login %}{% endblock %}"><a href="{% url 'wiki:login' %}">Login</a></li>
