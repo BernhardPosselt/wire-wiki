@@ -4,8 +4,8 @@ Project base
 
 Dependencies
 ============
-python2-markdown
-python-django
+* python2-markdown
+* python-django
 
 Before Deploying
 ================
