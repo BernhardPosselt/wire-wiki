@@ -22,7 +22,32 @@
         <th>{% trans 'Date of change' %}: </th>
         <td>{{ change.timestamp|date:"Y M, H:i" }}</td>
     </tr>
+    {% if previous_change %}
+        <tr>
+            <th>{% trans 'Previous version' %}: </th>
+            <td><a href="{% url 'wiki:changelog_detail' previous_change.id %}">Previous version</a></td>
+        </tr>   
+    {% endif %}
+    {% if diff %}
+    <tr>
+        <th>{% trans 'Diff' %}: </th>
+        <td><a href="#" class="show_diff">Show diff</a></td>
+    </tr>
+    {% endif %}
 </table>
+
+{% if diff %}
+    <div class="diff">
+        <table>
+        {% for line in diff %}
+            <tr class="{{ line.css_class }}">
+                <th>{{ forloop.counter }}</th>
+                <td>{{ line.diff }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+{% endif %}
 
 <div class="text">
     {{ html|safe }}

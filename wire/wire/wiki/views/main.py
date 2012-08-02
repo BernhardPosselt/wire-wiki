@@ -2,6 +2,7 @@
 #-*- coding:utf-8 -*-
 
 import json
+import difflib
 import markdown
 
 from django.shortcuts import get_object_or_404, render
@@ -63,13 +64,44 @@ def changelog(request):
 
 @login_required
 def changelog_detail(request, change_id):
-    change = get_object_or_404(WikiPageModification, pk=change_id)
-    page = change.page
-    html = markdown.markdown(change.content.encode("UTF-8"))
+    current_change = get_object_or_404(WikiPageModification, pk=change_id)
+    page = current_change.page
+
+    current_change_lines = current_change.content.splitlines()
+    previous_change_lines = []
+
+    try:
+        previous_change = WikiPageModification.objects.filter(pk__lt=change_id).latest('timestamp')
+        previous_change_lines = previous_change.content.splitlines()
+    except WikiPageModification.DoesNotExist:
+        previous_change = False
+
+    # build diff
+    diff = []
+    for diff_line in difflib.context_diff(previous_change_lines, current_change_lines):
+        if diff_line.strip().startswith("+"):
+            css_class = "added"
+        elif diff_line.strip().startswith("---"):
+            css_class = "seperator"
+        elif diff_line.strip().startswith("-"):
+            css_class = "deleted"
+        elif diff_line.strip().startswith("!"):
+            css_class = "modified"
+        else:
+            css_class = ""
+        line = {
+            'diff': diff_line,
+            'css_class': css_class,
+        }
+        diff.append(line)
+
+    html = markdown.markdown(current_change.content.encode("UTF-8"))
     ctx = {
         'page': page,
-        'change': change,
-        'html': html
+        'change': current_change,
+        'previous_change': previous_change,
+        'html': html,
+        'diff': diff,
     }
     return render(request, 'wiki/changelog_detail.html', ctx)
 

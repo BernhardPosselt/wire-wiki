@@ -284,6 +284,7 @@ nav {
 
     #content .changelog_detail {
         border: 1px solid #ccc;
+        width: 100%;
     }
 
         #content .changelog_detail tr {
@@ -303,7 +304,49 @@ nav {
         #content .changelog_detail td {
             padding: 3px 5px 3px 10px;
             background-color: #EBFFA6;
-            width: 400px;
+        }
+
+    #content .diff {
+        width: 100%;
+        margin: 0 0 20px 0;
+        display: none;
+    }
+
+        #content .diff table {
+            width: 100%;
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            background-color: #eee;
+        }
+
+            #content .diff table th {
+                padding: 0;
+                width: 30px;
+                font-weight: normal;
+                background-color: #444;
+                color: #fefefe;
+                border-bottom: 1px solid #555;
+            }
+
+            #content .diff table td {
+                padding-left: 10px;
+                border-bottom: 1px solid #ccc;
+            }
+
+        #content .diff .added {
+            background-color: #DDFFDD;
+        }    
+
+        #content .diff .deleted {
+            background-color: #FFDDDD;
+        }
+
+        #content .diff .modified {
+            background-color: #FFFFCC;
+        }
+
+        #content .diff .seperator {
+            background-color: #C5D5DD;
         }
 
 /**

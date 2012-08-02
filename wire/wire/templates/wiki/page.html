@@ -10,6 +10,7 @@
 <ul class="utils">
     <li><a href="{% url 'wiki:page_edit' page.id %}">{% trans 'Edit page' %}</a></li>
     <li><a href="{% url 'wiki:page_delete' page.id %}">{% trans 'Delete page' %}</a></li>
+    <li><a href="{% url 'wiki:page_changelog' page.id %}">{% trans 'Changelog' %}</a></li>
 </ul>
 <hr class="utils_seperation"/>
 <h1>{% trans 'Page' %}: {{ page.title }}</h1>
@@ -23,5 +24,6 @@
 <ul class="utils">
     <li><a href="{% url 'wiki:page_edit' page.id %}">{% trans 'Edit page' %}</a></li>
     <li><a href="{% url 'wiki:page_delete' page.id %}">{% trans 'Delete page' %}</a></li>
+    <li><a href="{% url 'wiki:page_changelog' page.id %}">{% trans 'Changelog' %}</a></li>
 </ul>
 {% endblock %}

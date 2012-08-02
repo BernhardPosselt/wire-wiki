@@ -11,7 +11,7 @@ urlpatterns = patterns('wire.wiki.views.main',
     url(r'^page/new/$', 'page_new', name='page_new'),
     url(r'^page/edit/(?P<page_id>\d+)/$', 'page_edit', name='page_edit'),
     url(r'^page/delete/(?P<page_id>\d+)/$', 'page_delete', name='page_delete'),
-    url(r'^page/changelog/(?P<page_id>\d+)/$', 'page_changelog', name='page_changelog'),
+    url(r'^page/(?P<page_id>\d+)/changelog/$', 'page_changelog', name='page_changelog'),
 
     url(r'^changelog/$', 'changelog', name='changelog'),
     url(r'^changelog/(?P<change_id>\d+)/$', 'changelog_detail', name='changelog_detail'),

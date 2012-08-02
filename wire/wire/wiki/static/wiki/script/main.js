@@ -8,4 +8,8 @@ $(document).ready(function(){
         // settings are in the settings object
         
     });
+
+    $(".show_diff").click(function(){
+        $(".diff").slideToggle();
+    })
 });
