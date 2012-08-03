@@ -10,6 +10,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.utils.translation import ugettext_lazy as _
 
 from wire.wiki.models import WikiPage, WikiPageModification
 from wire.wiki.forms import WikiPageForm, WikiPageModificationForm
@@ -147,9 +148,21 @@ def page_edit(request, page_id):
     page = get_object_or_404(WikiPage, pk=page_id)
     modifications = WikiPageModification.objects.filter(page__id=page_id)
 
+    edit_warning = ''
+    # get the current latest modifcation
+    try:
+        previous_change_id = WikiPageModification.objects.filter(page=page_id).latest('timestamp').id
+    except WikiPageModification.DoesNotExist:
+        previous_change_id = 0
+
     if request.method == 'POST':
+        # check if the id via post is the currently latest change
+        if previous_change_id != int(request.POST.get('previous_change_id')):
+            edit_warning = _("Your page was edited by someone else before you could save. \
+                Please copy all your changes and merge them with the current version.")
+        print "DB %s POST %s" % (previous_change_id, request.POST.get('previous_change_id'))
         form = WikiPageModificationForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() and edit_warning == '':
             form = form.save(commit=False)
             form.user = request.user
             form.page = page
@@ -166,6 +179,8 @@ def page_edit(request, page_id):
         'form': form,
         'page': page,
         'modifications': modifications,
+        'previous_change_id': previous_change_id,
+        'edit_warning': edit_warning
     }
     return render(request, 'wiki/page_edit.html', ctx)
 
