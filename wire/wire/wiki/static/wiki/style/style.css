@@ -185,13 +185,15 @@ nav {
         padding: 25px;
     }
 
-        #content .text h1, #content .text h2 {
-            font-weight: normal;
-        }
 
         #content .text h1 {
             border-bottom: 1px solid #ccc;
+            font-weight: normal;
         }
+
+        #content .text h2 {
+        }
+
 
         #content .text table {
             border: 1px solid #ccc;
@@ -294,12 +296,12 @@ nav {
         }
 
     #content pre {
-        background-color: #333;
+        background-color: #ddd;
         border: 1px solid #ccc;
         border-left: 3px solid #bbb;
         padding: 5px;
         font-family: monospace;
-        color: #fefefe;
+        color: #000;
     }
 
     #content .warning {
