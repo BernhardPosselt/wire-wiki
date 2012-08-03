@@ -6,7 +6,7 @@
 
 {% block nav_changelog %}active{% endblock %}
 
-<h1>Changelog of {{ page.title }}</h1>
+<h1>{% trans 'Changelog of' %} {{ page.title }}</h1>
     
 {% block content %}
 <table class="changelog_detail">
@@ -31,7 +31,7 @@
     {% if diff %}
     <tr>
         <th>{% trans 'Diff' %}: </th>
-        <td><a href="#" class="show_diff">Show diff</a></td>
+        <td><a href="#" class="show_diff">{% trans 'Show diff' %}:</a></td>
     </tr>
     {% endif %}
 </table>

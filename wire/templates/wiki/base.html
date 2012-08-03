@@ -21,23 +21,23 @@
 {% block body %}
     <div id="site">
         <div id="main">
-            <!--[if lte IE 8]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+            <!--[if lte IE 8]><p class=chromeframe>{% blocktrans %}Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.{% endblocktrans %}</p><![endif]-->
             <header></header>
             
             <nav>
                 <ul>
                     {% if user.is_authenticated %}
-                        <li class="{% block nav_home %}{% endblock %}"><a href="{% url 'wiki:index' %}">Wiki</a></li>
-                        <li class="{% block nav_pages %}{% endblock %}"><a href="{% url 'wiki:pages' %}">Pages</a></li>
-                        <li class="{% block nav_page_new %}{% endblock %}"><a href="{% url 'wiki:page_new' %}">New Page</a></li>
-                        <li class="{% block nav_changelog %}{% endblock %}"><a href="{% url 'wiki:changelog' %}">Changelog</a></li>
-                        <li><a href="http://daringfireball.net/projects/markdown/syntax/">Syntax</a></li>
+                        <li class="{% block nav_home %}{% endblock %}"><a href="{% url 'wiki:index' %}">{% trans 'Wiki' %}</a></li>
+                        <li class="{% block nav_pages %}{% endblock %}"><a href="{% url 'wiki:pages' %}">{% trans 'Pages' %}</a></li>
+                        <li class="{% block nav_page_new %}{% endblock %}"><a href="{% url 'wiki:page_new' %}">{% trans 'New Page' %}</a></li>
+                        <li class="{% block nav_changelog %}{% endblock %}"><a href="{% url 'wiki:changelog' %}">{% trans 'Changelog' %}</a></li>
+                        <li><a href="http://daringfireball.net/projects/markdown/syntax/">{% trans 'Syntax' %}</a></li>
                         {% if user.is_superuser %}
-                            <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                            <li><a href="{% url 'admin:index' %}">{% trans 'Admin' %}</a></li>
                         {% endif %}
-                        <li><a href="{% url 'wiki:logout_to_index' %}">Logout</a></li>
+                        <li><a href="{% url 'wiki:logout_to_index' %}">{% trans 'Logout' %}</a></li>
                     {% else %}
-                        <li class="{% block nav_login %}{% endblock %}"><a href="{% url 'wiki:login' %}?next=/">Login</a></li>
+                        <li class="{% block nav_login %}{% endblock %}"><a href="{% url 'wiki:login' %}?next=/">{% trans 'Login' %}</a></li>
                     {% endif %}
                 </ul>   
             </nav>
