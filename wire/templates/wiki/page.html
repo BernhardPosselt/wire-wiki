@@ -9,6 +9,7 @@
 {% block content %}
 <ul class="utils">
     <li style="padding: 0 10px">{% trans 'Page' %}: {{ page.title }}</li>
+    {% if last_update %}<li style="padding: 0 10px">{% trans 'Last upate' %}: {{ last_update|date:"Y-m-d H:i:s" }}</li>{% endif %}
     <li><a href="{% url 'wiki:page_edit' page.id %}">{% trans 'Edit' %}</a></li>
     <li><a href="{% url 'wiki:page_delete' page.id %}">{% trans 'Delete' %}</a></li>
     <li><a href="{% url 'wiki:page_changelog' page.id %}">{% trans 'Changelog' %}</a></li>

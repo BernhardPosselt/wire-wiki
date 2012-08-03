@@ -113,13 +113,16 @@ def page(request, page_id):
     modifications = WikiPageModification.objects.filter(page__id=page_id)
     if len(modifications) > 0:
         latest_modification = modifications[0]
+        last_update = latest_modification.timestamp
         html = markdown.markdown(unicode(latest_modification.content))
     else:
+        last_update = False
         html = u''
 
     ctx = {
         'page': page,
-        'html': html
+        'html': html,
+        'last_update': last_update
     }
     return render(request, 'wiki/page.html', ctx)
 
