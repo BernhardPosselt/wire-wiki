@@ -299,7 +299,7 @@ nav {
         background-color: #ddd;
         border: 1px solid #ccc;
         border-left: 3px solid #bbb;
-        padding: 5px;
+        padding: 5px 5px 5px 10px;
         font-family: monospace;
         color: #000;
     }
