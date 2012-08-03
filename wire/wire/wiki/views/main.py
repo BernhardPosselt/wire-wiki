@@ -130,7 +130,7 @@ def page_new(request):
         form = WikiPageForm(request.POST)
         if form.is_valid():
             form = form.save()
-            return HttpResponseRedirect(reverse('wiki:page', args=[form.id]))
+            return HttpResponseRedirect(reverse('wiki:page_edit', args=[form.id]))
     else:
         initial = {
             'title': title
