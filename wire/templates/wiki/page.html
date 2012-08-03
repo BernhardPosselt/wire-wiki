@@ -1,0 +1,21 @@
+{% extends 'wiki/base.html' %}
+{% load url from future %}
+{% load i18n %}
+
+{% block title %}WIRE - {{ page.title }}{% endblock %}
+
+{% block nav_home %}active{% endblock %}
+    
+{% block content %}
+<ul class="utils">
+    <li style="padding: 0 10px">{% trans 'Page' %}: {{ page.title }}</li>
+    <li><a href="{% url 'wiki:page_edit' page.id %}">{% trans 'Edit' %}</a></li>
+    <li><a href="{% url 'wiki:page_delete' page.id %}">{% trans 'Delete' %}</a></li>
+    <li><a href="{% url 'wiki:page_changelog' page.id %}">{% trans 'Changelog' %}</a></li>
+</ul>
+
+<div class="text">
+    {{ html|safe }}
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'wiki/base.html' %}
+{% load url from future %}
+{% load i18n %}
+
+{% block title %}{% blocktrans %}WIRE - Delete{% endblocktrans %} {{ page.title }}{% endblock %}
+
+{% block nav_home %}active{% endblock %}
+    
+{% block content %}
+<ul class="utils">
+    <li><a href="{% url 'wiki:page' page.id %}">{% trans 'Back' %}</a></li>
+</ul>
+
+<p>{% trans 'Are you sure that you want to delete the page'%}: {{ page.title }} ? 
+
+<form action="{% url 'wiki:page_delete' page.id %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="{% blocktrans %}Yes{% endblocktrans %}" />
+    <input type="button" onclick="history.back()" value="{% blocktrans %}No{% endblocktrans %}" />
+</form>
+</p>
+
+{% endblock %}

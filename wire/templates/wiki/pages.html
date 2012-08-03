@@ -1,0 +1,28 @@
+{% extends 'wiki/base.html' %}
+{% load url from future %}
+{% load i18n %}
+
+{% block title %}WIRE - {% trans 'Pages' %}{% endblock %}
+
+{% block nav_pages %}active{% endblock %}
+    
+{% block content %}
+
+<h1>{% trans 'Pages' %}</h1>
+
+{% if not index_page_exists %}
+<p class="warning">Index page does not exist! Create a <a href="{% url 'wiki:page_new' %}?title=Index">new Page</a>
+With the name Index. This page will be shown by default under the Wiki link.</p>
+{% endif %}
+
+{% if pages %}
+    <ul>
+    {% for page in pages %}
+        <li><a href="{% url 'wiki:page' page.id %}">{{ page.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+<p>{% trans 'No pages available' %}</p>
+{% endif %}
+
+{% endblock %}
