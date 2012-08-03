@@ -189,9 +189,11 @@ nav {
         #content .text h1 {
             border-bottom: 1px solid #ccc;
             font-weight: normal;
+            margin-top: 40px;
         }
 
         #content .text h2 {
+            margin-top: 30px;
         }
 
 
