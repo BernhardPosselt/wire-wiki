@@ -159,7 +159,7 @@ def page_edit(request, page_id):
         # check if the id via post is the currently latest change
         if previous_change_id != int(request.POST.get('previous_change_id')):
             edit_warning = _("Your page was edited by someone else before you could save. \
-                Please copy all your changes and merge them with the current version.")
+                Please copy all your changes, reload this page and merge them with the current version.")
         print "DB %s POST %s" % (previous_change_id, request.POST.get('previous_change_id'))
         form = WikiPageModificationForm(request.POST)
         if form.is_valid() and edit_warning == '':
