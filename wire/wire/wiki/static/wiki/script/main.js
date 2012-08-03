@@ -12,4 +12,7 @@ $(document).ready(function(){
     $(".show_diff").click(function(){
         $(".diff").slideToggle();
     })
+
+    $("form.edit textarea").markItUp(mySettings);
+
 });

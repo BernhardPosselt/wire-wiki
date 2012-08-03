@@ -168,8 +168,8 @@ nav {
     }
 
     #content h1, #content h2 {
-        margin: 0;
-        padding: 10px 0;
+        margin: 10px 0 10px 0;
+        padding: 0 0;
     }
 
     #content h1 {
@@ -184,6 +184,33 @@ nav {
     #content .text {
         padding: 25px;
     }
+
+        #content .text h1, #content .text h2 {
+            font-weight: normal;
+        }
+
+        #content .text h1 {
+            border-bottom: 1px solid #ccc;
+        }
+
+        #content .text table {
+            border: 1px solid #ccc;
+            width: 100%;
+            border-bottom: 0;
+        }
+
+            #content .text table th {
+                background-color: #ddd;
+                border-bottom: 1px solid #ccc;
+                font-weight: normal;
+                text-align: center;
+                padding: 2px 5px;
+            }
+
+            #content .text table td {
+                border-bottom: 1px solid #ccc;
+                padding: 2px 5px;
+            }
 
     #content ul.utils {
         padding: 0;
@@ -230,7 +257,7 @@ nav {
         }
 
 
-        #content .wiki_form textarea {
+        #content .edit textarea {
             width: 100%;
             height: 600px;
             font-family: monospace;
@@ -267,10 +294,12 @@ nav {
         }
 
     #content pre {
-        background-color: #ddd;
+        background-color: #333;
         border: 1px solid #ccc;
         border-left: 3px solid #bbb;
         padding: 5px;
+        font-family: monospace;
+        color: #fefefe;
     }
 
     #content .warning {

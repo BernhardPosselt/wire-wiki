@@ -7,9 +7,10 @@
         <meta name="author" content="{% block authors %}{% endblock %}"/>
         <meta name="keywords" content="{% block keywords %}{% endblock %}"/>
         <meta name="description" content="{% block description %}{% endblock %}"/>
-        <link rel="stylesheet" href="{{ STATIC_URL }}common/style/lib/normalize.css" type="text/css" media="all"/>
+        <link rel="stylesheet" href="{{ STATIC_URL }}common/style/lib/normalize/normalize.css" type="text/css" media="all"/>
         <script src="{{ STATIC_URL }}common/script/lib/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="{{ STATIC_URL }}common/script/lib/django-jquery-csrf.js" type="text/javascript" charset="utf-8"></script>
+        <script src="{{ STATIC_URL }}common/script/lib/jquery.markitup.js" type="text/javascript" charset="utf-8"></script>
         {% block extra_head %}{% endblock %}
     </head>
 
