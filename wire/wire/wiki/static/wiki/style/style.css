@@ -82,7 +82,7 @@ form table tr {
     min-height: 100%;
     width: 100%;
     position: relative;
-    background-color: #F1F1F1;
+    background-color: #EFEFEF;
     font-family: dejavusans;
     font-size: 12pt;
 }
@@ -153,8 +153,8 @@ nav {
     margin: auto;
     padding: 25px;
     background-color: #fefefe;
-    -webkit-box-shadow: 0px 1px 5px 1px #333;
-    box-shadow: 0px 1px 5px 1px #ccc; 
+    -webkit-box-shadow: 0px 1px 5px 2px #333;
+    box-shadow: 0px 1px 5px 2px #ccc; 
 }
 
     #content p {
@@ -177,21 +177,37 @@ nav {
     }
 
     #content h2 {
-        font-size: 14pt;
+        font-size: 12pt;
+    }
+        
+    #content a {
+        color: #26ADE4;
+        font-size: 14px;
+        text-decoration: none;
     }
 
 
     #content .text {
-        padding: 25px;
+        padding: 25px 0 25px 0;
     }
 
+        #content .text p {
+            font-size: 11pt;
+        }
 
         #content .text h1 {
             border-bottom: 1px solid #ccc;
             font-weight: normal;
+            font-size: 14pt;
+            padding-bottom: 8px;
         }
 
         #content .text h2 {
+            border-bottom: 1px solid #ccc;
+            font-weight: normal;
+            font-size: 12pt;
+            padding-bottom: 8px;
+            color: #3c3c3c;
         }
 
 
