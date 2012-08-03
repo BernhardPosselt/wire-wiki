@@ -95,7 +95,7 @@ def changelog_detail(request, change_id):
         }
         diff.append(line)
 
-    html = markdown.markdown(current_change.content.encode("UTF-8"))
+    html = markdown.markdown(unicode(current_change.content))
     ctx = {
         'page': page,
         'change': current_change,
@@ -112,9 +112,9 @@ def page(request, page_id):
     modifications = WikiPageModification.objects.filter(page__id=page_id)
     if len(modifications) > 0:
         latest_modification = modifications[0]
-        html = markdown.markdown(latest_modification.content.encode("UTF-8"))
+        html = markdown.markdown(unicode(latest_modification.content))
     else:
-        html = ''
+        html = u''
 
     ctx = {
         'page': page,
