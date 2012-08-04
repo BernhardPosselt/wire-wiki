@@ -96,13 +96,15 @@ def changelog_detail(request, change_id):
         }
         diff.append(line)
 
-    html = markdown.markdown(unicode(current_change.content))
+    source = current_change.content
+    html = markdown.markdown(unicode(source))
     ctx = {
         'page': page,
         'change': current_change,
         'previous_change': previous_change,
         'html': html,
         'diff': diff,
+        'source': source
     }
     return render(request, 'wiki/changelog_detail.html', ctx)
 

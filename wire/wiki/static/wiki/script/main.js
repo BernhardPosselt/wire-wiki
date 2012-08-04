@@ -11,6 +11,12 @@ $(document).ready(function(){
 
     $(".show_diff").click(function(){
         $(".diff").slideToggle();
+        return false;
+    })
+
+    $(".show_source").click(function(){
+        $(".source").slideToggle();
+        return false;
     })
 
     $("form.edit textarea").markItUp(mySettings);

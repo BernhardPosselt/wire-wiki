@@ -31,10 +31,15 @@
     {% if diff %}
     <tr>
         <th>{% trans 'Diff' %}: </th>
-        <td><a href="#" class="show_diff">{% trans 'Show diff' %}:</a></td>
+        <td><a href="#" class="show_diff">{% trans 'Show diff' %}</a></td>
     </tr>
     {% endif %}
+    <tr>
+        <th>{% trans 'Source' %}: </th>
+        <td><a href="#" class="show_source">{% trans 'Show source' %}</a></td>
+    </tr>
 </table>
+
 
 {% if diff %}
     <div class="diff">
@@ -48,6 +53,8 @@
         </table>
     </div>
 {% endif %}
+
+<div class="source"><textarea>{{ source }}</textarea></div>
 
 <div class="text">
     {{ html|safe }}
