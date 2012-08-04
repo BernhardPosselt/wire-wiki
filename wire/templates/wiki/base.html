@@ -37,7 +37,7 @@
                         {% endif %}
                         <li><a href="{% url 'wiki:logout_to_index' %}">{% trans 'Logout' %}</a></li>
                     {% else %}
-                        <li class="{% block nav_login %}{% endblock %}"><a href="{% url 'wiki:login' %}?next=/">{% trans 'Login' %}</a></li>
+                        <li class="{% block nav_login %}{% endblock %}"><a href="{% url 'wiki:login' %}?next={% url 'wiki:index' %}">{% trans 'Login' %}</a></li>
                     {% endif %}
                 </ul>   
             </nav>
